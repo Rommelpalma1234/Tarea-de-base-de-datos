@@ -2,10 +2,11 @@
 ----------primer consulta-------------
 
 SELECT 
-('Dr. ' || '' ||  personal_doctores.nombre_d || ' ' || personal_doctores.apellido_d )  as Nombre_doctores,
-personal_doctores.especialidad_d as Especialidad,
-personal_doctores.pacientes_atendidos 
-from personal_doctores
+('Dr. ' || '' ||  personal_medico.nombre_d || ' ' || personal_medico.apellido_d )  as Nombre_doctores,
+personal_medico.especialidad_d as Especialidad,
+pacientes_ancianos.pacientes_atendidos 
+from personal_medico
+inner join pacientes_ancianos on pacientes_ancianos.id_pacientes = personal_medico.id_doctor
 
 
 -----------segunda consulta ----------
