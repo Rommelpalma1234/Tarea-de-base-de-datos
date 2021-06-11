@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      PostgreSQL 8                                 */
-/* Created on:     6/5/2021 4:53:25 AM                          */
+/* Created on:     6/10/2021 12:26:00 PM                        */
 /*==============================================================*/
 
 
@@ -14,17 +14,17 @@ drop index ACTIVIDADES_GRUPALES_PK;
 
 drop table ACTIVIDADES_GRUPALES;
 
+drop index RELATIONSHIP_3_FK;
+
 drop index ASILO_PK;
 
 drop table ASILO;
 
+drop index RELATIONSHIP_9_FK;
+
 drop index CANTONES_PK;
 
 drop table CANTONES;
-
-drop index RELATIONSHIP_9_FK;
-
-drop index RELATIONSHIP_3_FK;
 
 drop index CIUDAD_PK;
 
@@ -60,6 +60,8 @@ drop index INCIDENTES_DE_PACIENTES_PK;
 
 drop table INCIDENTES_DE_PACIENTES;
 
+drop index RELATIONSHIP_20_FK;
+
 drop index RELATIONSHIP_1_FK;
 
 drop index PACIENTES_ANCIANOS_PK;
@@ -86,15 +88,7 @@ drop table PERSONAL_DE_LIMPIEZA;
 
 drop index RELATIONSHIP_18_FK;
 
-drop index RELATIONSHIP_12_FK;
-
-drop index PERSONAL_DIETAS_PK;
-
-drop table PERSONAL_DIETAS;
-
-drop index RELATIONSHIP_13_FK;
-
-drop index RELATIONSHIP_5_FK;
+drop index RELATIONSHIP_19_FK;
 
 drop index PERSONAL_MEDICO_PK;
 
@@ -116,6 +110,8 @@ create table ACTIVIDADES_GRUPALES (
    TIPO_ACTIVIDAD_GRUPAL TEXT                 not null,
    constraint PK_ACTIVIDADES_GRUPALES primary key (ID_ACTIVIDADES_GRUPALES)
 );
+
+
 
 /*==============================================================*/
 /* Index: ACTIVIDADES_GRUPALES_PK                               */
@@ -150,6 +146,7 @@ ID_ESPECIALISTA
 /*==============================================================*/
 create table ASILO (
    ID_ASILO             SERIAL               not null,
+   ID_CIUDAD            INT4                 null,
    NOMBRE_ASILO         TEXT                 not null,
    CIUDAD_ASILO         TEXT                 not null,
    CALLE_ASILO          TEXT                 not null,
@@ -157,6 +154,7 @@ create table ASILO (
    FUNDACION_DEL_ASILO  TEXT                 not null,
    constraint PK_ASILO primary key (ID_ASILO)
 );
+
 
 /*==============================================================*/
 /* Index: ASILO_PK                                              */
@@ -166,13 +164,24 @@ ID_ASILO
 );
 
 /*==============================================================*/
+/* Index: RELATIONSHIP_3_FK                                     */
+/*==============================================================*/
+create  index RELATIONSHIP_3_FK on ASILO (
+ID_CIUDAD
+);
+
+/*==============================================================*/
 /* Table: CANTONES                                              */
 /*==============================================================*/
 create table CANTONES (
    ID_CANTON            SERIAL               not null,
+   ID_CIUDAD            INT4                 null,
    CANTON_NOMBRE        TEXT                 not null,
    constraint PK_CANTONES primary key (ID_CANTON)
 );
+
+
+
 
 /*==============================================================*/
 /* Index: CANTONES_PK                                           */
@@ -182,35 +191,28 @@ ID_CANTON
 );
 
 /*==============================================================*/
+/* Index: RELATIONSHIP_9_FK                                     */
+/*==============================================================*/
+create  index RELATIONSHIP_9_FK on CANTONES (
+ID_CIUDAD
+);
+
+/*==============================================================*/
 /* Table: CIUDAD                                                */
 /*==============================================================*/
 create table CIUDAD (
    ID_CIUDAD            SERIAL               not null,
-   ID_ASILO             INT4                 null,
-   ID_CANTON            INT4                 null,
    CIUDAD_NOMBRE        TEXT                 not null,
    constraint PK_CIUDAD primary key (ID_CIUDAD)
 );
+
+
 
 /*==============================================================*/
 /* Index: CIUDAD_PK                                             */
 /*==============================================================*/
 create unique index CIUDAD_PK on CIUDAD (
 ID_CIUDAD
-);
-
-/*==============================================================*/
-/* Index: RELATIONSHIP_3_FK                                     */
-/*==============================================================*/
-create  index RELATIONSHIP_3_FK on CIUDAD (
-ID_ASILO
-);
-
-/*==============================================================*/
-/* Index: RELATIONSHIP_9_FK                                     */
-/*==============================================================*/
-create  index RELATIONSHIP_9_FK on CIUDAD (
-ID_CANTON
 );
 
 /*==============================================================*/
@@ -228,6 +230,8 @@ create table ESPECIALISTA_INDIVIDUALES (
    TIPO_ACTIVIDAD_INDIVIDUAL TEXT                 not null,
    constraint PK_ESPECIALISTA_INDIVIDUALES primary key (ID_ESPECIALISTA)
 );
+
+
 
 /*==============================================================*/
 /* Index: ESPECIALISTA_INDIVIDUALES_PK                          */
@@ -285,6 +289,8 @@ create table FAMILIAR_CERCANO (
    constraint PK_FAMILIAR_CERCANO primary key (ID_FAMILIA)
 );
 
+
+
 /*==============================================================*/
 /* Index: FAMILIAR_CERCANO_PK                                   */
 /*==============================================================*/
@@ -309,6 +315,8 @@ create table HABITACIONES (
    HABITACION_DESCRIPCION TEXT                 not null,
    constraint PK_HABITACIONES primary key (ID_HABITACION)
 );
+
+
 
 /*==============================================================*/
 /* Index: HABITACIONES_PK                                       */
@@ -336,6 +344,8 @@ create table INCIDENTES_DE_PACIENTES (
    constraint PK_INCIDENTES_DE_PACIENTES primary key (ID_INCIDENTES)
 );
 
+
+
 /*==============================================================*/
 /* Index: INCIDENTES_DE_PACIENTES_PK                            */
 /*==============================================================*/
@@ -356,10 +366,11 @@ ID_ASILO
 create table PACIENTES_ANCIANOS (
    ID_PACIENTES         SERIAL               not null,
    ID_ASILO             INT4                 null,
+   ID_INCIDENTES        INT4                 null,
    CEDULA_P             NUMERIC(20)          not null,
    NOMBRE_P             TEXT                 not null,
    APELLIDO_P           TEXT                 not null,
-   EDAD_P               TEXT                 not null,
+   EDAD_P               I(1333)              not null,
    COLOR_P              TEXT                 not null,
    SEXO_P               TEXT                 not null,
    ALTURA_P             TEXT                 not null,
@@ -386,6 +397,13 @@ ID_ASILO
 );
 
 /*==============================================================*/
+/* Index: RELATIONSHIP_20_FK                                    */
+/*==============================================================*/
+create  index RELATIONSHIP_20_FK on PACIENTES_ANCIANOS (
+ID_INCIDENTES
+);
+
+/*==============================================================*/
 /* Table: PACIENTES_PAGOS                                       */
 /*==============================================================*/
 create table PACIENTES_PAGOS (
@@ -395,6 +413,8 @@ create table PACIENTES_PAGOS (
    CEDULA               NUMERIC(10)          not null,
    constraint PK_PACIENTES_PAGOS primary key (PAGOS_ID)
 );
+
+
 
 /*==============================================================*/
 /* Index: PACIENTES_PAGOS_PK                                    */
@@ -422,6 +442,8 @@ create table PAGOS (
    PAGO_DINERO_FISICO   TEXT                 not null,
    constraint PK_PAGOS primary key (ID_PAGOS)
 );
+
+
 
 /*==============================================================*/
 /* Index: PAGOS_PK                                              */
@@ -451,6 +473,8 @@ create table PERSONAL_DE_LIMPIEZA (
    constraint PK_PERSONAL_DE_LIMPIEZA primary key (ID_LIMPIEZA)
 );
 
+
+
 /*==============================================================*/
 /* Index: PERSONAL_DE_LIMPIEZA_PK                               */
 /*==============================================================*/
@@ -466,75 +490,45 @@ ID_ASILO
 );
 
 /*==============================================================*/
-/* Table: PERSONAL_DIETAS                                       */
-/*==============================================================*/
-create table PERSONAL_DIETAS (
-   ID_PL_DE_DIETAS      SERIAL               not null,
-   ID_PACIENTES         INT4                 null,
-   ID_ASILO             INT4                 null,
-   NOMBRE_DIETA         TEXT                 not null,
-   ENCARGADO_DE_DIETA   TEXT                 not null,
-   FECHA_DE_ENTRADA     DATE                 not null,
-   PAGO_ESPECIALIDAD    MONEY                not null,
-   DIETA_SEMANAL        DATE                 not null,
-   COSTO_DE_DIETA       MONEY                not null,
-   constraint PK_PERSONAL_DIETAS primary key (ID_PL_DE_DIETAS)
-);
-
-/*==============================================================*/
-/* Index: PERSONAL_DIETAS_PK                                    */
-/*==============================================================*/
-create unique index PERSONAL_DIETAS_PK on PERSONAL_DIETAS (
-ID_PL_DE_DIETAS
-);
-
-/*==============================================================*/
-/* Index: RELATIONSHIP_12_FK                                    */
-/*==============================================================*/
-create  index RELATIONSHIP_12_FK on PERSONAL_DIETAS (
-ID_PACIENTES
-);
-
-/*==============================================================*/
-/* Index: RELATIONSHIP_18_FK                                    */
-/*==============================================================*/
-create  index RELATIONSHIP_18_FK on PERSONAL_DIETAS (
-ID_ASILO
-);
-
-/*==============================================================*/
 /* Table: PERSONAL_MEDICO                                       */
 /*==============================================================*/
 create table PERSONAL_MEDICO (
-   ID_DOCTOR            SERIAL               not null,
+   ID_PERSONAL_MEDICO   SERIAL               not null,
    ID_ASILO             INT4                 null,
    ID_PACIENTES         INT4                 null,
-   NOMBRE_D             TEXT                 not null,
+   DOCTOR_DIETA         TEXT                 not null,
+   DOCTOR_MEDICINA_GENERAL TEXT                 not null,
+   FECHA_ENTRADA        DATE                 not null,
+   DIETA_SEMANAL        DATE                 not null,
+   COSTO_DIETA          MONEY                not null,
    APELLIDO_D           TEXT                 not null,
    ESPECIALIDAD_D       TEXT                 not null,
-   DEPARTAMENTO_D       TEXT                 not null,
-   PAGOS_A_DOCTORES     MONEY                not null,
-   constraint PK_PERSONAL_MEDICO primary key (ID_DOCTOR)
+   PAGO_D               MONEY                not null,
+   DIETAS_DESCRIPCION   TEXT                 not null,
+   MEDICINA_DESCRIPCION TEXT                 not null,
+   NOMBRE_DIETA         TEXT                 not null,
+   constraint PK_PERSONAL_MEDICO primary key (ID_PERSONAL_MEDICO)
 );
+
 
 /*==============================================================*/
 /* Index: PERSONAL_MEDICO_PK                                    */
 /*==============================================================*/
 create unique index PERSONAL_MEDICO_PK on PERSONAL_MEDICO (
-ID_DOCTOR
+ID_PERSONAL_MEDICO
 );
 
 /*==============================================================*/
-/* Index: RELATIONSHIP_5_FK                                     */
+/* Index: RELATIONSHIP_19_FK                                    */
 /*==============================================================*/
-create  index RELATIONSHIP_5_FK on PERSONAL_MEDICO (
+create  index RELATIONSHIP_19_FK on PERSONAL_MEDICO (
 ID_ASILO
 );
 
 /*==============================================================*/
-/* Index: RELATIONSHIP_13_FK                                    */
+/* Index: RELATIONSHIP_18_FK                                    */
 /*==============================================================*/
-create  index RELATIONSHIP_13_FK on PERSONAL_MEDICO (
+create  index RELATIONSHIP_18_FK on PERSONAL_MEDICO (
 ID_PACIENTES
 );
 
@@ -553,14 +547,14 @@ alter table ACTIVIDADES_GRUPALES
       references ASILO (ID_ASILO)
       on delete restrict on update restrict;
 
-alter table CIUDAD
-   add constraint FK_CIUDAD_RELATIONS_ASILO foreign key (ID_ASILO)
-      references ASILO (ID_ASILO)
+alter table ASILO
+   add constraint FK_ASILO_RELATIONS_CIUDAD foreign key (ID_CIUDAD)
+      references CIUDAD (ID_CIUDAD)
       on delete restrict on update restrict;
 
-alter table CIUDAD
-   add constraint FK_CIUDAD_RELATIONS_CANTONES foreign key (ID_CANTON)
-      references CANTONES (ID_CANTON)
+alter table CANTONES
+   add constraint FK_CANTONES_RELATIONS_CIUDAD foreign key (ID_CIUDAD)
+      references CIUDAD (ID_CIUDAD)
       on delete restrict on update restrict;
 
 alter table ESPECIALISTA_INDIVIDUALES
@@ -593,6 +587,11 @@ alter table PACIENTES_ANCIANOS
       references ASILO (ID_ASILO)
       on delete restrict on update restrict;
 
+alter table PACIENTES_ANCIANOS
+   add constraint FK_PACIENTE_RELATIONS_INCIDENT foreign key (ID_INCIDENTES)
+      references INCIDENTES_DE_PACIENTES (ID_INCIDENTES)
+      on delete restrict on update restrict;
+
 alter table PACIENTES_PAGOS
    add constraint FK_PACIENTE_RELATIONS_PACIENTE foreign key (ID_PACIENTES)
       references PACIENTES_ANCIANOS (ID_PACIENTES)
@@ -604,16 +603,6 @@ alter table PAGOS
       on delete restrict on update restrict;
 
 alter table PERSONAL_DE_LIMPIEZA
-   add constraint FK_PERSONAL_RELATIONS_ASILO foreign key (ID_ASILO)
-      references ASILO (ID_ASILO)
-      on delete restrict on update restrict;
-
-alter table PERSONAL_DIETAS
-   add constraint FK_PERSONAL_RELATIONS_PACIENTE foreign key (ID_PACIENTES)
-      references PACIENTES_ANCIANOS (ID_PACIENTES)
-      on delete restrict on update restrict;
-
-alter table PERSONAL_DIETAS
    add constraint FK_PERSONAL_RELATIONS_ASILO foreign key (ID_ASILO)
       references ASILO (ID_ASILO)
       on delete restrict on update restrict;
