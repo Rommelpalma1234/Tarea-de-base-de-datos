@@ -140,6 +140,9 @@ values(5,'jaime cedeño','ronaldo','06/07/2021', '06/07/2021', 25, 'quiroz','Oft
 insert into personal_medico (id_personal_medico, doctor_dieta, doctor_medicina_general, fecha_entrada, dieta_semanal, costo_dieta, apellido_d, 
 							especialidad_d, pago_d, dietas_descripcion, medicina_descripcion, nombre_dieta)
 values(6,'remberto marcillo','jimmy','06/07/2021', '06/07/2021', 80, 'acebo','Oftalmología',2000,'ninguna','ninguna','Dieta estomacal' );
+insert into personal_medico (id_personal_medico, doctor_dieta, doctor_medicina_general, fecha_entrada, dieta_semanal, costo_dieta, apellido_d, 
+							especialidad_d, pago_d, dietas_descripcion, medicina_descripcion, nombre_dieta)
+values(7,'bayron arce','','06/07/2021', '06/07/2021', 80, 'cabeza','Nutriología',2000,'ninguna','ninguna','Nutriología' );
 
 
 
