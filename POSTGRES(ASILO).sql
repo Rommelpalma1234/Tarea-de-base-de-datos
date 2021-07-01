@@ -1,42 +1,28 @@
 /*==============================================================*/
 /* DBMS name:      PostgreSQL 8                                 */
-/* Created on:     6/10/2021 12:26:00 PM                        */
+/* Created on:     7/1/2021 11:41:46 AM                         */
 /*==============================================================*/
 
-
-drop index RELATIONSHIP_17_FK;
 
 drop index RELATIONSHIP_10_FK;
 
 drop index RELATIONSHIP_2_FK;
 
-drop index ACTIVIDADES_GRUPALES_PK;
+drop index ACTIVIDAD_PACIENTE_PK;
 
-drop table ACTIVIDADES_GRUPALES;
-
-drop index RELATIONSHIP_3_FK;
+drop table ACTIVIDAD_PACIENTE;
 
 drop index ASILO_PK;
 
 drop table ASILO;
 
-drop index RELATIONSHIP_9_FK;
+drop index RELATIONSHIP_23_FK;
 
-drop index CANTONES_PK;
+drop index CONSULTAS_MEDICAS_PK;
 
-drop table CANTONES;
+drop table CONSULTAS_MEDICAS;
 
-drop index CIUDAD_PK;
-
-drop table CIUDAD;
-
-drop index RELATIONSHIP_4_FK;
-
-drop index ESPECIALISTA_INDIVIDUALES_PK;
-
-drop table ESPECIALISTA_INDIVIDUALES;
-
-drop index RELATIONSHIP_6_FK;
+drop index RELATIONSHIP_24_FK;
 
 drop index FALLECIMIENTO_DE_PACIENTES_PK;
 
@@ -60,6 +46,8 @@ drop index INCIDENTES_DE_PACIENTES_PK;
 
 drop table INCIDENTES_DE_PACIENTES;
 
+drop index RELATIONSHIP_21_FK;
+
 drop index RELATIONSHIP_20_FK;
 
 drop index RELATIONSHIP_1_FK;
@@ -80,6 +68,14 @@ drop index PAGOS_PK;
 
 drop table PAGOS;
 
+drop index RELATIONSHIP_22_FK;
+
+drop index RELATIONSHIP_17_FK;
+
+drop index PERSONAL_DE_DIETA_PK;
+
+drop table PERSONAL_DE_DIETA;
+
 drop index RELATIONSHIP_7_FK;
 
 drop index PERSONAL_DE_LIMPIEZA_PK;
@@ -95,50 +91,40 @@ drop index PERSONAL_MEDICO_PK;
 drop table PERSONAL_MEDICO;
 
 /*==============================================================*/
-/* Table: ACTIVIDADES_GRUPALES                                  */
+/* Table: ACTIVIDAD_PACIENTE                                    */
 /*==============================================================*/
-create table ACTIVIDADES_GRUPALES (
+create table ACTIVIDAD_PACIENTE (
    ID_ACTIVIDADES_GRUPALES SERIAL               not null,
    ID_ASILO             INT4                 null,
    ID_PACIENTES         INT4                 null,
-   ID_ESPECIALISTA      INT4                 null,
-   NOMBRE_ENCARGADO     TEXT                 not null,
-   FECHA_INGRESO        DATE                 not null,
+   PERSONAL_ACTIVIDAD_G TEXT                 not null,
    HORA_DE_INICIO_ACTIVIDADES TIME                 not null,
    HORA_DE_FIN_ACTIVIDADES TIME                 not null,
-   PAGO_PERSONA_GRUPAL  MONEY                not null,
    TIPO_ACTIVIDAD_GRUPAL TEXT                 not null,
-   constraint PK_ACTIVIDADES_GRUPALES primary key (ID_ACTIVIDADES_GRUPALES)
+   PERSONAL_ACTIVIDAD_I TEXT                 not null,
+   TIPO_ACTIVIDAD_I     TEXT                 not null,
+   constraint PK_ACTIVIDAD_PACIENTE primary key (ID_ACTIVIDADES_GRUPALES)
 );
 
-
-
 /*==============================================================*/
-/* Index: ACTIVIDADES_GRUPALES_PK                               */
+/* Index: ACTIVIDAD_PACIENTE_PK                                 */
 /*==============================================================*/
-create unique index ACTIVIDADES_GRUPALES_PK on ACTIVIDADES_GRUPALES (
+create unique index ACTIVIDAD_PACIENTE_PK on ACTIVIDAD_PACIENTE (
 ID_ACTIVIDADES_GRUPALES
 );
 
 /*==============================================================*/
 /* Index: RELATIONSHIP_2_FK                                     */
 /*==============================================================*/
-create  index RELATIONSHIP_2_FK on ACTIVIDADES_GRUPALES (
+create  index RELATIONSHIP_2_FK on ACTIVIDAD_PACIENTE (
 ID_ASILO
 );
 
 /*==============================================================*/
 /* Index: RELATIONSHIP_10_FK                                    */
 /*==============================================================*/
-create  index RELATIONSHIP_10_FK on ACTIVIDADES_GRUPALES (
+create  index RELATIONSHIP_10_FK on ACTIVIDAD_PACIENTE (
 ID_PACIENTES
-);
-
-/*==============================================================*/
-/* Index: RELATIONSHIP_17_FK                                    */
-/*==============================================================*/
-create  index RELATIONSHIP_17_FK on ACTIVIDADES_GRUPALES (
-ID_ESPECIALISTA
 );
 
 /*==============================================================*/
@@ -146,7 +132,6 @@ ID_ESPECIALISTA
 /*==============================================================*/
 create table ASILO (
    ID_ASILO             SERIAL               not null,
-   ID_CIUDAD            INT4                 null,
    NOMBRE_ASILO         TEXT                 not null,
    CIUDAD_ASILO         TEXT                 not null,
    CALLE_ASILO          TEXT                 not null,
@@ -154,7 +139,6 @@ create table ASILO (
    FUNDACION_DEL_ASILO  TEXT                 not null,
    constraint PK_ASILO primary key (ID_ASILO)
 );
-
 
 /*==============================================================*/
 /* Index: ASILO_PK                                              */
@@ -164,87 +148,28 @@ ID_ASILO
 );
 
 /*==============================================================*/
-/* Index: RELATIONSHIP_3_FK                                     */
+/* Table: CONSULTAS_MEDICAS                                     */
 /*==============================================================*/
-create  index RELATIONSHIP_3_FK on ASILO (
-ID_CIUDAD
+create table CONSULTAS_MEDICAS (
+   CONSULTAS_ID         SERIAL               not null,
+   ID_PACIENTES         INT4                 null,
+   CONSULTAS_REALIZADAS NUMERIC(100)         not null,
+   CONSULTA_DESCRIPCION TEXT                 not null,
+   constraint PK_CONSULTAS_MEDICAS primary key (CONSULTAS_ID)
 );
 
 /*==============================================================*/
-/* Table: CANTONES                                              */
+/* Index: CONSULTAS_MEDICAS_PK                                  */
 /*==============================================================*/
-create table CANTONES (
-   ID_CANTON            SERIAL               not null,
-   ID_CIUDAD            INT4                 null,
-   CANTON_NOMBRE        TEXT                 not null,
-   constraint PK_CANTONES primary key (ID_CANTON)
-);
-
-
-
-
-/*==============================================================*/
-/* Index: CANTONES_PK                                           */
-/*==============================================================*/
-create unique index CANTONES_PK on CANTONES (
-ID_CANTON
+create unique index CONSULTAS_MEDICAS_PK on CONSULTAS_MEDICAS (
+CONSULTAS_ID
 );
 
 /*==============================================================*/
-/* Index: RELATIONSHIP_9_FK                                     */
+/* Index: RELATIONSHIP_23_FK                                    */
 /*==============================================================*/
-create  index RELATIONSHIP_9_FK on CANTONES (
-ID_CIUDAD
-);
-
-/*==============================================================*/
-/* Table: CIUDAD                                                */
-/*==============================================================*/
-create table CIUDAD (
-   ID_CIUDAD            SERIAL               not null,
-   CIUDAD_NOMBRE        TEXT                 not null,
-   constraint PK_CIUDAD primary key (ID_CIUDAD)
-);
-
-
-
-/*==============================================================*/
-/* Index: CIUDAD_PK                                             */
-/*==============================================================*/
-create unique index CIUDAD_PK on CIUDAD (
-ID_CIUDAD
-);
-
-/*==============================================================*/
-/* Table: ESPECIALISTA_INDIVIDUALES                             */
-/*==============================================================*/
-create table ESPECIALISTA_INDIVIDUALES (
-   ID_ESPECIALISTA      SERIAL               not null,
-   ID_ASILO             INT4                 null,
-   CEDULA_ESPECIALESTA  NUMERIC(10)          not null,
-   ESPECIALIADAD        TEXT                 not null,
-   NOMBRE_ESPECIALISTA  TEXT                 not null,
-   PAGO_A_ESPECIALISTA  MONEY                not null,
-   HORA_INICIO_ACTIVIDAD TIME                 not null,
-   HORA_FIN_ACTIVIDAD   TIME                 not null,
-   TIPO_ACTIVIDAD_INDIVIDUAL TEXT                 not null,
-   constraint PK_ESPECIALISTA_INDIVIDUALES primary key (ID_ESPECIALISTA)
-);
-
-
-
-/*==============================================================*/
-/* Index: ESPECIALISTA_INDIVIDUALES_PK                          */
-/*==============================================================*/
-create unique index ESPECIALISTA_INDIVIDUALES_PK on ESPECIALISTA_INDIVIDUALES (
-ID_ESPECIALISTA
-);
-
-/*==============================================================*/
-/* Index: RELATIONSHIP_4_FK                                     */
-/*==============================================================*/
-create  index RELATIONSHIP_4_FK on ESPECIALISTA_INDIVIDUALES (
-ID_ASILO
+create  index RELATIONSHIP_23_FK on CONSULTAS_MEDICAS (
+ID_PACIENTES
 );
 
 /*==============================================================*/
@@ -252,7 +177,7 @@ ID_ASILO
 /*==============================================================*/
 create table FALLECIMIENTO_DE_PACIENTES (
    ID_FALLECIMIENTO     SERIAL               not null,
-   ID_ASILO             INT4                 null,
+   ID_PACIENTES         INT4                 null,
    FECHA_FALLECIMIENTO  DATE                 not null,
    DIAGNOSTICO_FALLECIMIENTO TEXT                 not null,
    LUGAR_FALLECIMIENTO  TEXT                 not null,
@@ -269,10 +194,10 @@ ID_FALLECIMIENTO
 );
 
 /*==============================================================*/
-/* Index: RELATIONSHIP_6_FK                                     */
+/* Index: RELATIONSHIP_24_FK                                    */
 /*==============================================================*/
-create  index RELATIONSHIP_6_FK on FALLECIMIENTO_DE_PACIENTES (
-ID_ASILO
+create  index RELATIONSHIP_24_FK on FALLECIMIENTO_DE_PACIENTES (
+ID_PACIENTES
 );
 
 /*==============================================================*/
@@ -288,8 +213,6 @@ create table FAMILIAR_CERCANO (
    CELULAR2_F           NUMERIC(10)          not null,
    constraint PK_FAMILIAR_CERCANO primary key (ID_FAMILIA)
 );
-
-
 
 /*==============================================================*/
 /* Index: FAMILIAR_CERCANO_PK                                   */
@@ -315,8 +238,6 @@ create table HABITACIONES (
    HABITACION_DESCRIPCION TEXT                 not null,
    constraint PK_HABITACIONES primary key (ID_HABITACION)
 );
-
-
 
 /*==============================================================*/
 /* Index: HABITACIONES_PK                                       */
@@ -344,8 +265,6 @@ create table INCIDENTES_DE_PACIENTES (
    constraint PK_INCIDENTES_DE_PACIENTES primary key (ID_INCIDENTES)
 );
 
-
-
 /*==============================================================*/
 /* Index: INCIDENTES_DE_PACIENTES_PK                            */
 /*==============================================================*/
@@ -367,14 +286,14 @@ create table PACIENTES_ANCIANOS (
    ID_PACIENTES         SERIAL               not null,
    ID_ASILO             INT4                 null,
    ID_INCIDENTES        INT4                 null,
+   ID_FALLECIMIENTO     INT4                 null,
    CEDULA_P             NUMERIC(20)          not null,
    NOMBRE_P             TEXT                 not null,
    APELLIDO_P           TEXT                 not null,
-   EDAD_P               I(1333)              not null,
+   EDAD_P               TEXT                 not null,
    COLOR_P              TEXT                 not null,
    SEXO_P               TEXT                 not null,
    ALTURA_P             TEXT                 not null,
-   CONSULTAS_MECICAS    TEXT                 not null,
    ANCIANO_SIN_HOGAR    BOOL                 not null,
    FECHA_DE_ENTRADA     DATE                 not null,
    CONDICIONES_SALUD    TEXT                 not null,
@@ -404,6 +323,13 @@ ID_INCIDENTES
 );
 
 /*==============================================================*/
+/* Index: RELATIONSHIP_21_FK                                    */
+/*==============================================================*/
+create  index RELATIONSHIP_21_FK on PACIENTES_ANCIANOS (
+ID_FALLECIMIENTO
+);
+
+/*==============================================================*/
 /* Table: PACIENTES_PAGOS                                       */
 /*==============================================================*/
 create table PACIENTES_PAGOS (
@@ -413,8 +339,6 @@ create table PACIENTES_PAGOS (
    CEDULA               NUMERIC(10)          not null,
    constraint PK_PACIENTES_PAGOS primary key (PAGOS_ID)
 );
-
-
 
 /*==============================================================*/
 /* Index: PACIENTES_PAGOS_PK                                    */
@@ -443,8 +367,6 @@ create table PAGOS (
    constraint PK_PAGOS primary key (ID_PAGOS)
 );
 
-
-
 /*==============================================================*/
 /* Index: PAGOS_PK                                              */
 /*==============================================================*/
@@ -460,6 +382,43 @@ PAGOS_ID
 );
 
 /*==============================================================*/
+/* Table: PERSONAL_DE_DIETA                                     */
+/*==============================================================*/
+create table PERSONAL_DE_DIETA (
+   PERSONAL_DIETA_ID    SERIAL               not null,
+   ID_PACIENTES         INT4                 null,
+   ID_ASILO             INT4                 null,
+   FECHA_ENTRADA        DATE                 not null,
+   FECHA_SALIDA         DATE                 not null,
+   DIETAS_DESCRIPCION   TEXT                 not null,
+   COSTO_DIETA          MONEY                not null,
+   TIPO_DE_DIETA        TEXT                 not null,
+   ESPECIALISTA_DE_DIETA TEXT                 not null,
+   constraint PK_PERSONAL_DE_DIETA primary key (PERSONAL_DIETA_ID)
+);
+
+/*==============================================================*/
+/* Index: PERSONAL_DE_DIETA_PK                                  */
+/*==============================================================*/
+create unique index PERSONAL_DE_DIETA_PK on PERSONAL_DE_DIETA (
+PERSONAL_DIETA_ID
+);
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_17_FK                                    */
+/*==============================================================*/
+create  index RELATIONSHIP_17_FK on PERSONAL_DE_DIETA (
+ID_PACIENTES
+);
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_22_FK                                    */
+/*==============================================================*/
+create  index RELATIONSHIP_22_FK on PERSONAL_DE_DIETA (
+ID_ASILO
+);
+
+/*==============================================================*/
 /* Table: PERSONAL_DE_LIMPIEZA                                  */
 /*==============================================================*/
 create table PERSONAL_DE_LIMPIEZA (
@@ -472,8 +431,6 @@ create table PERSONAL_DE_LIMPIEZA (
    PAGO_LIMPIEZA        MONEY                not null,
    constraint PK_PERSONAL_DE_LIMPIEZA primary key (ID_LIMPIEZA)
 );
-
-
 
 /*==============================================================*/
 /* Index: PERSONAL_DE_LIMPIEZA_PK                               */
@@ -496,20 +453,14 @@ create table PERSONAL_MEDICO (
    ID_PERSONAL_MEDICO   SERIAL               not null,
    ID_ASILO             INT4                 null,
    ID_PACIENTES         INT4                 null,
-   DOCTOR_DIETA         TEXT                 not null,
-   DOCTOR_MEDICINA_GENERAL TEXT                 not null,
-   FECHA_ENTRADA        DATE                 not null,
-   DIETA_SEMANAL        DATE                 not null,
-   COSTO_DIETA          MONEY                not null,
-   APELLIDO_D           TEXT                 not null,
-   ESPECIALIDAD_D       TEXT                 not null,
-   PAGO_D               MONEY                not null,
-   DIETAS_DESCRIPCION   TEXT                 not null,
+   PERSONAL_MEDICINA_GENERAL TEXT                 not null,
+   ESPECIALIDAD_DOCTOR  TEXT                 not null,
    MEDICINA_DESCRIPCION TEXT                 not null,
-   NOMBRE_DIETA         TEXT                 not null,
+   HORA_ENTRADA         TIME                 not null,
+   HORA_SALIDA          TIME                 not null,
+   PAGO_MEDICOS         MONEY                not null,
    constraint PK_PERSONAL_MEDICO primary key (ID_PERSONAL_MEDICO)
 );
-
 
 /*==============================================================*/
 /* Index: PERSONAL_MEDICO_PK                                    */
@@ -532,39 +483,24 @@ create  index RELATIONSHIP_18_FK on PERSONAL_MEDICO (
 ID_PACIENTES
 );
 
-alter table ACTIVIDADES_GRUPALES
+alter table ACTIVIDAD_PACIENTE
    add constraint FK_ACTIVIDA_RELATIONS_PACIENTE foreign key (ID_PACIENTES)
       references PACIENTES_ANCIANOS (ID_PACIENTES)
       on delete restrict on update restrict;
 
-alter table ACTIVIDADES_GRUPALES
-   add constraint FK_ACTIVIDA_RELATIONS_ESPECIAL foreign key (ID_ESPECIALISTA)
-      references ESPECIALISTA_INDIVIDUALES (ID_ESPECIALISTA)
-      on delete restrict on update restrict;
-
-alter table ACTIVIDADES_GRUPALES
+alter table ACTIVIDAD_PACIENTE
    add constraint FK_ACTIVIDA_RELATIONS_ASILO foreign key (ID_ASILO)
       references ASILO (ID_ASILO)
       on delete restrict on update restrict;
 
-alter table ASILO
-   add constraint FK_ASILO_RELATIONS_CIUDAD foreign key (ID_CIUDAD)
-      references CIUDAD (ID_CIUDAD)
-      on delete restrict on update restrict;
-
-alter table CANTONES
-   add constraint FK_CANTONES_RELATIONS_CIUDAD foreign key (ID_CIUDAD)
-      references CIUDAD (ID_CIUDAD)
-      on delete restrict on update restrict;
-
-alter table ESPECIALISTA_INDIVIDUALES
-   add constraint FK_ESPECIAL_RELATIONS_ASILO foreign key (ID_ASILO)
-      references ASILO (ID_ASILO)
+alter table CONSULTAS_MEDICAS
+   add constraint FK_CONSULTA_RELATIONS_PACIENTE foreign key (ID_PACIENTES)
+      references PACIENTES_ANCIANOS (ID_PACIENTES)
       on delete restrict on update restrict;
 
 alter table FALLECIMIENTO_DE_PACIENTES
-   add constraint FK_FALLECIM_RELATIONS_ASILO foreign key (ID_ASILO)
-      references ASILO (ID_ASILO)
+   add constraint FK_FALLECIM_RELATIONS_PACIENTE foreign key (ID_PACIENTES)
+      references PACIENTES_ANCIANOS (ID_PACIENTES)
       on delete restrict on update restrict;
 
 alter table FAMILIAR_CERCANO
@@ -592,6 +528,11 @@ alter table PACIENTES_ANCIANOS
       references INCIDENTES_DE_PACIENTES (ID_INCIDENTES)
       on delete restrict on update restrict;
 
+alter table PACIENTES_ANCIANOS
+   add constraint FK_PACIENTE_RELATIONS_FALLECIM foreign key (ID_FALLECIMIENTO)
+      references FALLECIMIENTO_DE_PACIENTES (ID_FALLECIMIENTO)
+      on delete restrict on update restrict;
+
 alter table PACIENTES_PAGOS
    add constraint FK_PACIENTE_RELATIONS_PACIENTE foreign key (ID_PACIENTES)
       references PACIENTES_ANCIANOS (ID_PACIENTES)
@@ -600,6 +541,16 @@ alter table PACIENTES_PAGOS
 alter table PAGOS
    add constraint FK_PAGOS_RELATIONS_PACIENTE foreign key (PAGOS_ID)
       references PACIENTES_PAGOS (PAGOS_ID)
+      on delete restrict on update restrict;
+
+alter table PERSONAL_DE_DIETA
+   add constraint FK_PERSONAL_RELATIONS_PACIENTE foreign key (ID_PACIENTES)
+      references PACIENTES_ANCIANOS (ID_PACIENTES)
+      on delete restrict on update restrict;
+
+alter table PERSONAL_DE_DIETA
+   add constraint FK_PERSONAL_RELATIONS_ASILO foreign key (ID_ASILO)
+      references ASILO (ID_ASILO)
       on delete restrict on update restrict;
 
 alter table PERSONAL_DE_LIMPIEZA
