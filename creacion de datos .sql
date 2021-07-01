@@ -1,27 +1,4 @@
-select * from actividades_grupales
-select * from asilo
-select * from cantones
-select * from ciudad
-select * from especialista_individuales
-select * from fallecimiento_de_pacientes
-select * from familiar_cercano
-select * from habitaciones
-select * from incidentes_de_pacientes
-select * from pacientes_ancianos
-select * from pacientes_pagos
-select * from pagos
-select * from personal_de_limpieza
-select * from personal_medico
-
-
-
--------- insercion de datos 12:36 AM 6/11/2021--------------
-
--------- tabla ciudad 
-
-insert into ciudad (id_ciudad, ciudad_nombre)
-values(1,'Manta');
-
+-------- insercion de datos 4:30 PM 7/1/2021--------------
 
 
 --------tabla familiar_cercano
@@ -53,66 +30,83 @@ values(5,'felipe ortiz',2300535218);
 
 
 
---------tabla pacientes_ancianos
+--------tabla pacientes_ancianos   (falta7:22 PM 6/28/2021)
 
-insert into pacientes_ancianos(id_pacientes, cedula_p, nombre_p,apellido_p, edad_p, color_p, sexo_p, altura_p, consultas_mecicas,
+insert into pacientes_ancianos(id_pacientes, cedula_p, nombre_p,apellido_p, edad_p, color_p, sexo_p, altura_p,
 							  anciano_sin_hogar, fecha_de_entrada, condiciones_salud, llenado_de_fichas )
-values(1,2300535214,'jose jose','lucas palma', '52','mestizo', 'masculino', '1.70', '12', 'no' , '12/11/2020', 'buen estado', 'yes');
-insert into pacientes_ancianos(id_pacientes, cedula_p, nombre_p,apellido_p, edad_p, color_p, sexo_p, altura_p, consultas_mecicas,
+values(1,2300535214,'jose jose','lucas palma', '52','mestizo', 'masculino', '1.70', 'no' , '12/11/2020', 'buen estado', 'yes');
+insert into pacientes_ancianos(id_pacientes, cedula_p, nombre_p,apellido_p, edad_p, color_p, sexo_p, altura_p, 
 							  anciano_sin_hogar, fecha_de_entrada, condiciones_salud, llenado_de_fichas )
-values(2,2300535215,'pedro jose','lopez palma', '53','mestizo', 'masculino', '1.70', '15', 'no' , '12/11/2020', 'buen estado', 'yes');
-insert into pacientes_ancianos(id_pacientes, cedula_p, nombre_p,apellido_p, edad_p, color_p, sexo_p, altura_p, consultas_mecicas,
+values(2,2300535215,'pedro jose','lopez palma', '53','mestizo', 'masculino', '1.70', 'no' , '12/11/2020', 'buen estado', 'yes');
+insert into pacientes_ancianos(id_pacientes, cedula_p, nombre_p,apellido_p, edad_p, color_p, sexo_p, altura_p, 
 							  anciano_sin_hogar, fecha_de_entrada, condiciones_salud, llenado_de_fichas )
-values(3,2300535216,'mateo marcos','lucas reyes', '65','mestizo', 'masculino', '1.70', '9', 'yes' , '12/11/2020', 'buen estado', 'yes');
-insert into pacientes_ancianos(id_pacientes, cedula_p, nombre_p,apellido_p, edad_p, color_p, sexo_p, altura_p, consultas_mecicas,
+values(3,2300535216,'mateo marcos','lucas reyes', '65','mestizo', 'masculino', '1.70',  'yes' , '12/11/2020', 'buen estado', 'yes');
+insert into pacientes_ancianos(id_pacientes, cedula_p, nombre_p,apellido_p, edad_p, color_p, sexo_p, altura_p, 
 							  anciano_sin_hogar, fecha_de_entrada, condiciones_salud, llenado_de_fichas )
-values(4,2300535217,'maria jose','lucas palma', '67','mestizo', 'femenino', '1.50', '15', 'no' , '12/11/2020', 'buen estado', 'yes');
-insert into pacientes_ancianos(id_pacientes, cedula_p, nombre_p,apellido_p, edad_p, color_p, sexo_p, altura_p, consultas_mecicas,
+values(4,2300535217,'maria jose','lucas palma', '67','mestizo', 'femenino', '1.50',  'no' , '12/11/2020', 'buen estado', 'yes');
+insert into pacientes_ancianos(id_pacientes, cedula_p, nombre_p,apellido_p, edad_p, color_p, sexo_p, altura_p, 
 							  anciano_sin_hogar, fecha_de_entrada, condiciones_salud, llenado_de_fichas )
-values(5,2300535218,'felipe lapaz ','figueroa palma', '73','mestizo', 'masculino', '1.70', '12', 'no' , '12/11/2020', 'buen estado', 'yes');
-insert into pacientes_ancianos(id_pacientes, cedula_p, nombre_p,apellido_p, edad_p, color_p, sexo_p, altura_p, consultas_mecicas,
+values(5,2300535218,'felipe lapaz ','figueroa palma', '73','mestizo', 'masculino', '1.70',  'no' , '12/11/2020', 'buen estado', 'yes');
+insert into pacientes_ancianos(id_pacientes, cedula_p, nombre_p,apellido_p, edad_p, color_p, sexo_p, altura_p, 
 							  anciano_sin_hogar, fecha_de_entrada, condiciones_salud, llenado_de_fichas )
-values(6,2300535219,'rommel santiago','figueroa palma', '80','mestizo', 'masculino', '1.70', '12', 'no' , '12/11/2020', 'buen estado', 'yes');
+values(6,2300535219,'rommel santiago','figueroa palma', '80','mestizo', 'masculino', '1.70',  'no' , '12/11/2020', 'buen estado', 'yes');
 
 
 
 
---------tabla actividades_grupales
-
-insert into actividades_grupales(id_actividades_grupales, nombre_encargado, fecha_ingreso,hora_de_inicio_actividades, hora_de_fin_actividades,
-								 pago_persona_grupal, Tipo_actividad_grupal )
-values(1,'Santiago palma','12/11/2020', '3:00','5:00', 2000, 'FUTBOL');
-insert into actividades_grupales(id_actividades_grupales, nombre_encargado, fecha_ingreso,hora_de_inicio_actividades, hora_de_fin_actividades,
-								 pago_persona_grupal, Tipo_actividad_grupal )
-values(2,'Ramirez perez','12/11/2020', '3:00','5:00', 2000, 'escondidas');
-insert into actividades_grupales(id_actividades_grupales, nombre_encargado, fecha_ingreso,hora_de_inicio_actividades, hora_de_fin_actividades,
-								 pago_persona_grupal, Tipo_actividad_grupal )
-values(3,'Gregorio plua','12/11/2020', '3:00','5:00', 2000, 'cartas');
-insert into actividades_grupales(id_actividades_grupales, nombre_encargado, fecha_ingreso,hora_de_inicio_actividades, hora_de_fin_actividades,
-								 pago_persona_grupal, Tipo_actividad_grupal )
-values(4,'Ronaldo quiroz','12/11/2020', '3:00','5:00', 2000, 'ecuaboli');
-insert into actividades_grupales(id_actividades_grupales, nombre_encargado, fecha_ingreso,hora_de_inicio_actividades, hora_de_fin_actividades,
-								 pago_persona_grupal, Tipo_actividad_grupal )
-values(5,'Roman cedeño','12/11/2020', '3:00','5:00', 2000, 'indor');
 
 
 
 
---------tabla especialista_individuales
+-------- consultas_medicas
 
-insert into especialista_individuales(id_especialista, cedula_especialesta, especialiadad,nombre_especialista, pago_a_especialista,
+insert into consultas_medicas(consultas_id, consultas_realizadas, fecha_de_consulta, medico_encargado, consulta_descripcion)
+values(1,12,current_date,'Elliam perez','Cardiologia' );
+insert into consultas_medicas(consultas_id, consultas_realizadas, fecha_de_consulta, medico_encargado, consulta_descripcion)
+values(2,3,current_date,'Elliam perez','Cardiologia' );
+
+insert into consultas_medicas(consultas_id, consultas_realizadas, fecha_de_consulta, medico_encargado, consulta_descripcion)
+values(3,2,current_date,'Maria cedeño','Pulmonia' );
+insert into consultas_medicas(consultas_id, consultas_realizadas, fecha_de_consulta, medico_encargado, consulta_descripcion)
+values(4,6,current_date,'Maria cedeño','Pulmonia' );
+insert into consultas_medicas(consultas_id, consultas_realizadas, fecha_de_consulta, medico_encargado, consulta_descripcion)
+values(5,1,current_date,'Mario lopez','medicina general' );
+insert into consultas_medicas(consultas_id, consultas_realizadas, fecha_de_consulta, medico_encargado, consulta_descripcion)
+values(6,1,current_date,'Mario lopez','medicina general' );
+
+insert into consultas_medicas(consultas_id, consultas_realizadas, fecha_de_consulta, medico_encargado, consulta_descripcion)
+values(7,1,current_date,'Juan pilligua','urologia' );
+insert into consultas_medicas(consultas_id, consultas_realizadas, fecha_de_consulta, medico_encargado, consulta_descripcion)
+values(8,1,current_date,'Juan pilligua','urologia' );
+insert into consultas_medicas(consultas_id, consultas_realizadas, fecha_de_consulta, medico_encargado, consulta_descripcion)
+values(11,1,current_date,'jaime cedeño','Oftalmología' );
+insert into consultas_medicas(consultas_id, consultas_realizadas, fecha_de_consulta, medico_encargado, consulta_descripcion)
+values(12,1,current_date,'jaime cedeño','Oftalmología' );
+
+
+insert into consultas_medicas(consultas_id, consultas_realizadas, fecha_de_consulta, medico_encargado, consulta_descripcion)
+values(9,1,current_date,'remberto marcillo','Oftalmología' );
+insert into consultas_medicas(consultas_id, consultas_realizadas, fecha_de_consulta, medico_encargado, consulta_descripcion)
+values(10,1,current_date,'remberto marcillo','Oftalmología' );
+
+
+
+
+--------tabla actividad_paciente
+
+insert into actividad_paciente(id_especialista, cedula_especialesta, especialiadad,nombre_especialista, pago_a_especialista,
 								 hora_inicio_actividad, hora_fin_actividad,tipo_actividad_individual )
 values(1,3485743260,'terapias', 'Reinaldo palacio',2000, '12:00pm', '2:00pm', 'charlas');
-insert into especialista_individuales(id_especialista, cedula_especialesta, especialiadad,nombre_especialista, pago_a_especialista,
+insert into actividad_paciente(id_especialista, cedula_especialesta, especialiadad,nombre_especialista, pago_a_especialista,
 								 hora_inicio_actividad, hora_fin_actividad,tipo_actividad_individual )
 values(2,3485743261,'cartas', 'Eugenio espejo',2000, '12:00pm', '3:00pm', 'juego de cartas');
-insert into especialista_individuales(id_especialista, cedula_especialesta, especialiadad,nombre_especialista, pago_a_especialista,
+insert into actividad_paciente(id_especialista, cedula_especialesta, especialiadad,nombre_especialista, pago_a_especialista,
 								 hora_inicio_actividad, hora_fin_actividad,tipo_actividad_individual )
 values(3,3485743262,'terapias', 'Jimmy acebo',2000, '11:00pm', '2:00pm', 'charlas');
-insert into especialista_individuales(id_especialista, cedula_especialesta, especialiadad,nombre_especialista, pago_a_especialista,
+insert into actividad_paciente(id_especialista, cedula_especialesta, especialiadad,nombre_especialista, pago_a_especialista,
 								 hora_inicio_actividad, hora_fin_actividad,tipo_actividad_individual )
 values(4,3485743263,'comidas', 'Jose perez',2000, '12:00pm', '4:00pm', 'charlas');
-insert into especialista_individuales(id_especialista, cedula_especialesta, especialiadad,nombre_especialista, pago_a_especialista,
+insert into actividad_paciente(id_especialista, cedula_especialesta, especialiadad,nombre_especialista, pago_a_especialista,
 								 hora_inicio_actividad, hora_fin_actividad,tipo_actividad_individual )
 values(5,3485743264,'terapias', 'eloisa palma',2000, '12:00pm', '2:00pm', 'charlas');
 
@@ -122,27 +116,31 @@ values(5,3485743264,'terapias', 'eloisa palma',2000, '12:00pm', '2:00pm', 'charl
 
 --------tabla personal_medico 
 
-insert into personal_medico (id_personal_medico, doctor_dieta, doctor_medicina_general, fecha_entrada, dieta_semanal, costo_dieta, apellido_d, 
-							especialidad_d, pago_d, dietas_descripcion, medicina_descripcion, nombre_dieta)
-values(1,'Elliam perez','Jose ','06/07/2021', '06/07/2021', 30, 'perez','Cardiologia', 2000, 'ninguna','ninguna','Dieta hipocalórica' );
-insert into personal_medico (id_personal_medico, doctor_dieta, doctor_medicina_general, fecha_entrada, dieta_semanal, costo_dieta, apellido_d, 
-							especialidad_d, pago_d, dietas_descripcion, medicina_descripcion, nombre_dieta)
-values(2,'Maria cedeño','Rommel ','06/07/2021', '06/07/2021', 35, 'manat','Pulmonia',2000,'ninguna','ninguna','Dieta proteica' );
-insert into personal_medico (id_personal_medico, doctor_dieta, doctor_medicina_general, fecha_entrada, dieta_semanal, costo_dieta, apellido_d, 
-							especialidad_d, pago_d, dietas_descripcion, medicina_descripcion, nombre_dieta)
-values(3,'Mario lopez','francisco','06/07/2021', '06/07/2021', 40, 'lucas','medicina general',2000,'ninguna','ninguna','Dieta alcalina' );
-insert into personal_medico (id_personal_medico, doctor_dieta, doctor_medicina_general, fecha_entrada, dieta_semanal, costo_dieta, apellido_d, 
-							especialidad_d, pago_d, dietas_descripcion, medicina_descripcion, nombre_dieta)
-values(4,'Juan pilligua','roman','06/07/2021', '06/07/2021', 20, 'acebo','urologia',2000,'ninguna','ninguna','Dieta modificada con fibra' );
-insert into personal_medico (id_personal_medico, doctor_dieta, doctor_medicina_general, fecha_entrada, dieta_semanal, costo_dieta, apellido_d, 
-							especialidad_d, pago_d, dietas_descripcion, medicina_descripcion, nombre_dieta)
-values(5,'jaime cedeño','ronaldo','06/07/2021', '06/07/2021', 25, 'quiroz','Oftalmología',2000,'ninguna','ninguna','Dieta modificada con proteínas' );
-insert into personal_medico (id_personal_medico, doctor_dieta, doctor_medicina_general, fecha_entrada, dieta_semanal, costo_dieta, apellido_d, 
-							especialidad_d, pago_d, dietas_descripcion, medicina_descripcion, nombre_dieta)
-values(6,'remberto marcillo','jimmy','06/07/2021', '06/07/2021', 80, 'acebo','Oftalmología',2000,'ninguna','ninguna','Dieta estomacal' );
-insert into personal_medico (id_personal_medico, doctor_dieta, doctor_medicina_general, fecha_entrada, dieta_semanal, costo_dieta, apellido_d, 
-							especialidad_d, pago_d, dietas_descripcion, medicina_descripcion, nombre_dieta)
-values(7,'bayron arce','','06/07/2021', '06/07/2021', 80, 'cabeza','Nutriología',2000,'ninguna','ninguna','Nutriología' );
+
+--insert into personal_medico( id_personal_medico, personal_medicina_general, especialidad_doctor,medicina_descripcion, hora_entrada, hora_salida,
+						   pago_medicos)
+values(1,'Elliam perez', 'Cardiologia', 'revision de pacientes', '8:00', '15:00', 1000);
+
+--insert into personal_medico( id_personal_medico, personal_medicina_general, especialidad_doctor,medicina_descripcion, hora_entrada, hora_salida,
+						   pago_medicos)
+values(2,'Maria cedeño', 'Pulmonia', 'revision de pacientes', '8:00', '15:00', 1000);
+--insert into personal_medico( id_personal_medico, personal_medicina_general, especialidad_doctor,medicina_descripcion, hora_entrada, hora_salida,
+						   pago_medicos)
+values(3,'Mario lopez', 'medicina general', 'revision de pacientes', '8:00', '15:00', 1000);
+
+--insert into personal_medico( id_personal_medico, personal_medicina_general, especialidad_doctor,medicina_descripcion, hora_entrada, hora_salida,
+						   pago_medicos)
+values(4,'Juan pilligua', 'urologia', 'revision de pacientes', '8:00', '15:00', 1000);
+
+--insert into personal_medico( id_personal_medico, personal_medicina_general, especialidad_doctor,medicina_descripcion, hora_entrada, hora_salida,
+						   pago_medicos)
+values(5,'jaime cedeño', 'Oftalmología', 'revision de pacientes', '8:00', '15:00', 1000);
+
+
+--insert into personal_medico( id_personal_medico, personal_medicina_general, especialidad_doctor,medicina_descripcion, hora_entrada, hora_salida,
+						   pago_medicos)
+values(6,'remberto marcillo', 'Oftalmología', 'revision de pacientes', '8:00', '15:00', 1000);
+
 
 
 
@@ -203,11 +201,6 @@ values(3, '08/09/2020', 'caida de escaleras','asilo', 'marcos','pozo');
 
 
 
---------tabla cantones 
-
-insert into cantones (id_canton, canton_nombre)
-values(1,'El carmen');
-
 
 
 --------tabla incidentes_de_pacientes
@@ -220,4 +213,7 @@ insert into incidentes_de_pacientes(id_incidentes, fecha_incidente, incidente_de
 	
 insert into incidentes_de_pacientes(id_incidentes, fecha_incidente, incidente_descripcion, nombre_persna)
 	values(3,'06/5/2020', 'intento suicidarse', 'luis mendez');
+
+
+
 
