@@ -3,15 +3,15 @@
 
 ----------primer consulta-------------
 
-/*Consultar el nombre de médicos y su especialidad, numero de pacientes ancianos atendidos por cada uno según su especialidad */
 
-select 
-('Dr. ' || '' || personal_medico.doctor_medicina_general || '' || personal_medico.apellido_d) as nombre_doctores,
-personal_medico.especialidad_d as especialidad,
-pacientes_ancianos.consultas_mecicas
-from personal_medico
-inner join  pacientes_ancianos on pacientes_ancianos.id_pacientes = personal_medico.id_personal_medico
-
+/*Consultar el nombre de médicos, numero de atenciones realizadas por cada uno */
+select
+       ('Dr.' || '' || consultas_medicas.medico_encargado) as    medico_encargado ,
+       consultas_medicas.especialidad_doctor,
+       sum(consultas_realizadas) as consultas_realizadas
+	   
+from consultas_medicas
+group by medico_encargado,especialidad_doctor order by medico_encargado desc
 
 -----------segunda consulta ----------
 
