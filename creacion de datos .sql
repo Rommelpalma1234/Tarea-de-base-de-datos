@@ -53,45 +53,6 @@ values(6,2300535219,'rommel santiago','figueroa palma', '80','mestizo', 'masculi
 
 
 
-
-
-
-
-
--------- consultas_medicas
-
-insert into consultas_medicas(consultas_id, consultas_realizadas, fecha_de_consulta, medico_encargado, consulta_descripcion)
-values(1,12,current_date,'Elliam perez','Cardiologia' );
-insert into consultas_medicas(consultas_id, consultas_realizadas, fecha_de_consulta, medico_encargado, consulta_descripcion)
-values(2,3,current_date,'Elliam perez','Cardiologia' );
-
-insert into consultas_medicas(consultas_id, consultas_realizadas, fecha_de_consulta, medico_encargado, consulta_descripcion)
-values(3,2,current_date,'Maria cedeño','Pulmonia' );
-insert into consultas_medicas(consultas_id, consultas_realizadas, fecha_de_consulta, medico_encargado, consulta_descripcion)
-values(4,6,current_date,'Maria cedeño','Pulmonia' );
-insert into consultas_medicas(consultas_id, consultas_realizadas, fecha_de_consulta, medico_encargado, consulta_descripcion)
-values(5,1,current_date,'Mario lopez','medicina general' );
-insert into consultas_medicas(consultas_id, consultas_realizadas, fecha_de_consulta, medico_encargado, consulta_descripcion)
-values(6,1,current_date,'Mario lopez','medicina general' );
-
-insert into consultas_medicas(consultas_id, consultas_realizadas, fecha_de_consulta, medico_encargado, consulta_descripcion)
-values(7,1,current_date,'Juan pilligua','urologia' );
-insert into consultas_medicas(consultas_id, consultas_realizadas, fecha_de_consulta, medico_encargado, consulta_descripcion)
-values(8,1,current_date,'Juan pilligua','urologia' );
-insert into consultas_medicas(consultas_id, consultas_realizadas, fecha_de_consulta, medico_encargado, consulta_descripcion)
-values(11,1,current_date,'jaime cedeño','Oftalmología' );
-insert into consultas_medicas(consultas_id, consultas_realizadas, fecha_de_consulta, medico_encargado, consulta_descripcion)
-values(12,1,current_date,'jaime cedeño','Oftalmología' );
-
-
-insert into consultas_medicas(consultas_id, consultas_realizadas, fecha_de_consulta, medico_encargado, consulta_descripcion)
-values(9,1,current_date,'remberto marcillo','Oftalmología' );
-insert into consultas_medicas(consultas_id, consultas_realizadas, fecha_de_consulta, medico_encargado, consulta_descripcion)
-values(10,1,current_date,'remberto marcillo','Oftalmología' );
-
-
-
-
 --------tabla actividad_paciente
 
 insert into actividad_paciente(id_especialista, cedula_especialesta, especialiadad,nombre_especialista, pago_a_especialista,
@@ -117,27 +78,27 @@ values(5,3485743264,'terapias', 'eloisa palma',2000, '12:00pm', '2:00pm', 'charl
 --------tabla personal_medico 
 
 
---insert into personal_medico( id_personal_medico, personal_medicina_general, especialidad_doctor,medicina_descripcion, hora_entrada, hora_salida,
+insert into personal_medico( id_personal_medico, personal_medicina_general, especialidad_doctor,medicina_descripcion, hora_entrada, hora_salida,
 						   pago_medicos)
 values(1,'Elliam perez', 'Cardiologia', 'revision de pacientes', '8:00', '15:00', 1000);
 
---insert into personal_medico( id_personal_medico, personal_medicina_general, especialidad_doctor,medicina_descripcion, hora_entrada, hora_salida,
+insert into personal_medico( id_personal_medico, personal_medicina_general, especialidad_doctor,medicina_descripcion, hora_entrada, hora_salida,
 						   pago_medicos)
 values(2,'Maria cedeño', 'Pulmonia', 'revision de pacientes', '8:00', '15:00', 1000);
---insert into personal_medico( id_personal_medico, personal_medicina_general, especialidad_doctor,medicina_descripcion, hora_entrada, hora_salida,
+insert into personal_medico( id_personal_medico, personal_medicina_general, especialidad_doctor,medicina_descripcion, hora_entrada, hora_salida,
 						   pago_medicos)
 values(3,'Mario lopez', 'medicina general', 'revision de pacientes', '8:00', '15:00', 1000);
 
---insert into personal_medico( id_personal_medico, personal_medicina_general, especialidad_doctor,medicina_descripcion, hora_entrada, hora_salida,
+insert into personal_medico( id_personal_medico, personal_medicina_general, especialidad_doctor,medicina_descripcion, hora_entrada, hora_salida,
 						   pago_medicos)
 values(4,'Juan pilligua', 'urologia', 'revision de pacientes', '8:00', '15:00', 1000);
 
---insert into personal_medico( id_personal_medico, personal_medicina_general, especialidad_doctor,medicina_descripcion, hora_entrada, hora_salida,
+insert into personal_medico( id_personal_medico, personal_medicina_general, especialidad_doctor,medicina_descripcion, hora_entrada, hora_salida,
 						   pago_medicos)
 values(5,'jaime cedeño', 'Oftalmología', 'revision de pacientes', '8:00', '15:00', 1000);
 
 
---insert into personal_medico( id_personal_medico, personal_medicina_general, especialidad_doctor,medicina_descripcion, hora_entrada, hora_salida,
+insert into personal_medico( id_personal_medico, personal_medicina_general, especialidad_doctor,medicina_descripcion, hora_entrada, hora_salida,
 						   pago_medicos)
 values(6,'remberto marcillo', 'Oftalmología', 'revision de pacientes', '8:00', '15:00', 1000);
 
