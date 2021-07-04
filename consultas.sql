@@ -4,14 +4,17 @@
 ----------primer consulta-------------
 
 
-/*Consultar el nombre de médicos, numero de atenciones realizadas por cada uno */
-select
-       ('Dr.' || '' || consultas_medicas.medico_encargado) as    medico_encargado ,
-       consultas_medicas.especialidad_doctor,
-       sum(consultas_realizadas) as consultas_realizadas
-	   
-from consultas_medicas
-group by medico_encargado,especialidad_doctor order by medico_encargado desc
+/*Consultar el nombre de médicos, numero de atenciones realizadas por cada uno y su especialidad */
+
+select 
+p1.personal_medicina_general as medico,
+p1.especialidad_doctor,
+count(c1.id_personal_medico) as numero_consultas_realizadas
+
+from personal_medico as p1
+inner join consultas_medicas as c1 on p1.id_personal_medico = c1.id_personal_medico 
+group by personal_medicina_general,especialidad_doctor;
+
 
 -----------segunda consulta ----------
 
