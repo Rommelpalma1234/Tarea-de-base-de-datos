@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      PostgreSQL 8                                 */
-/* Created on:     7/1/2021 11:41:46 AM                         */
+/* Created on:     7/3/2021 8:32:54 PM                          */
 /*==============================================================*/
 
 
@@ -16,13 +16,15 @@ drop index ASILO_PK;
 
 drop table ASILO;
 
+drop index RELATIONSHIP_24_FK;
+
 drop index RELATIONSHIP_23_FK;
 
 drop index CONSULTAS_MEDICAS_PK;
 
 drop table CONSULTAS_MEDICAS;
 
-drop index RELATIONSHIP_24_FK;
+drop index RELATIONSHIP_25_FK;
 
 drop index FALLECIMIENTO_DE_PACIENTES_PK;
 
@@ -153,8 +155,9 @@ ID_ASILO
 create table CONSULTAS_MEDICAS (
    CONSULTAS_ID         SERIAL               not null,
    ID_PACIENTES         INT4                 null,
-   CONSULTAS_REALIZADAS NUMERIC(100)         not null,
+   ID_PERSONAL_MEDICO   INT4                 null,
    CONSULTA_DESCRIPCION TEXT                 not null,
+   FECHA_DE_CONSULTA    DATE                 not null,
    constraint PK_CONSULTAS_MEDICAS primary key (CONSULTAS_ID)
 );
 
@@ -170,6 +173,13 @@ CONSULTAS_ID
 /*==============================================================*/
 create  index RELATIONSHIP_23_FK on CONSULTAS_MEDICAS (
 ID_PACIENTES
+);
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_24_FK                                    */
+/*==============================================================*/
+create  index RELATIONSHIP_24_FK on CONSULTAS_MEDICAS (
+ID_PERSONAL_MEDICO
 );
 
 /*==============================================================*/
@@ -194,9 +204,9 @@ ID_FALLECIMIENTO
 );
 
 /*==============================================================*/
-/* Index: RELATIONSHIP_24_FK                                    */
+/* Index: RELATIONSHIP_25_FK                                    */
 /*==============================================================*/
-create  index RELATIONSHIP_24_FK on FALLECIMIENTO_DE_PACIENTES (
+create  index RELATIONSHIP_25_FK on FALLECIMIENTO_DE_PACIENTES (
 ID_PACIENTES
 );
 
@@ -291,9 +301,7 @@ create table PACIENTES_ANCIANOS (
    NOMBRE_P             TEXT                 not null,
    APELLIDO_P           TEXT                 not null,
    EDAD_P               TEXT                 not null,
-   COLOR_P              TEXT                 not null,
    SEXO_P               TEXT                 not null,
-   ALTURA_P             TEXT                 not null,
    ANCIANO_SIN_HOGAR    BOOL                 not null,
    FECHA_DE_ENTRADA     DATE                 not null,
    CONDICIONES_SALUD    TEXT                 not null,
@@ -496,6 +504,11 @@ alter table ACTIVIDAD_PACIENTE
 alter table CONSULTAS_MEDICAS
    add constraint FK_CONSULTA_RELATIONS_PACIENTE foreign key (ID_PACIENTES)
       references PACIENTES_ANCIANOS (ID_PACIENTES)
+      on delete restrict on update restrict;
+
+alter table CONSULTAS_MEDICAS
+   add constraint FK_CONSULTA_RELATIONS_PERSONAL foreign key (ID_PERSONAL_MEDICO)
+      references PERSONAL_MEDICO (ID_PERSONAL_MEDICO)
       on delete restrict on update restrict;
 
 alter table FALLECIMIENTO_DE_PACIENTES
