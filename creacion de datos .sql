@@ -217,3 +217,32 @@ insert into incidentes_de_pacientes(id_incidentes, fecha_incidente, incidente_de
 
 
 
+-----------------------   consultas medicas 
+
+insert into consultas_medicas (consultas_id, id_pacientes, id_personal_medico, consulta_descripcion, fecha_de_consulta) values (1, 4, 1, 'consulta por enfermedad grave', '13/08/2020');
+insert into consultas_medicas (consultas_id, id_pacientes, id_personal_medico, consulta_descripcion, fecha_de_consulta) values (2, 6, 5, 'consulta de rutina', '11/01/2021');
+insert into consultas_medicas (consultas_id, id_pacientes, id_personal_medico, consulta_descripcion, fecha_de_consulta) values (3, 1, 3, 'consulta de rutina', '03/06/2020');
+insert into consultas_medicas (consultas_id, id_pacientes, id_personal_medico, consulta_descripcion, fecha_de_consulta) values (4, 1, 4, 'consulta por enfermedad grave', '14/11/2020');
+insert into consultas_medicas (consultas_id, id_pacientes, id_personal_medico, consulta_descripcion, fecha_de_consulta) values (5, 4, 5, 'consulta por enfermedad grave', '29/12/2020');
+insert into consultas_medicas (consultas_id, id_pacientes, id_personal_medico, consulta_descripcion, fecha_de_consulta) values (6, 2, 1, 'consulta de emergencia', '16/04/2020');
+insert into consultas_medicas (consultas_id, id_pacientes, id_personal_medico, consulta_descripcion, fecha_de_consulta) values (7, 2, 2, 'consulta de control', '21/09/2020');
+insert into consultas_medicas (consultas_id, id_pacientes, id_personal_medico, consulta_descripcion, fecha_de_consulta) values (8, 3, 6, 'consulta de emergencia', '15/04/2020');
+insert into consultas_medicas (consultas_id, id_pacientes, id_personal_medico, consulta_descripcion, fecha_de_consulta) values (9, 5, 4, 'consulta de control', '17/11/2020');
+insert into consultas_medicas (consultas_id, id_pacientes, id_personal_medico, consulta_descripcion, fecha_de_consulta) values (10, 3, 4, 'consulta de emergencia', '22/04/2020');
+insert into consultas_medicas (consultas_id, id_pacientes, id_personal_medico, consulta_descripcion, fecha_de_consulta) values (11, 1, 3, 'consulta de rutina', '15/09/2020');
+insert into consultas_medicas (consultas_id, id_pacientes, id_personal_medico, consulta_descripcion, fecha_de_consulta) values (12, 2, 6, 'consulta por enfermedad grave', '08/10/2020');
+insert into consultas_medicas (consultas_id, id_pacientes, id_personal_medico, consulta_descripcion, fecha_de_consulta) values (13, 5, 4, 'consulta de rutina', '06/02/2021');
+insert into consultas_medicas (consultas_id, id_pacientes, id_personal_medico, consulta_descripcion, fecha_de_consulta) values (14, 4, 6, 'consulta por enfermedad grave', '24/12/2020');
+insert into consultas_medicas (consultas_id, id_pacientes, id_personal_medico, consulta_descripcion, fecha_de_consulta) values (15, 1, 6, 'consulta de control', '14/10/2020');
+insert into consultas_medicas (consultas_id, id_pacientes, id_personal_medico, consulta_descripcion, fecha_de_consulta) values (16, 4, 1, 'consulta por enfermedad grave', '21/05/2021');
+insert into consultas_medicas (consultas_id, id_pacientes, id_personal_medico, consulta_descripcion, fecha_de_consulta) values (17, 1, 6, 'consulta por enfermedad grave', '01/06/2021');
+insert into consultas_medicas (consultas_id, id_pacientes, id_personal_medico, consulta_descripcion, fecha_de_consulta) values (18, 3, 4, 'consulta de control', '09/03/2020');
+insert into consultas_medicas (consultas_id, id_pacientes, id_personal_medico, consulta_descripcion, fecha_de_consulta) values (19, 1, 3, 'consulta de emergencia', '25/06/2021');
+insert into consultas_medicas (consultas_id, id_pacientes, id_personal_medico, consulta_descripcion, fecha_de_consulta) values (20, 2, 3, 'consulta de control', '03/05/2021');
+insert into consultas_medicas (consultas_id, id_pacientes, id_personal_medico, consulta_descripcion, fecha_de_consulta) values (21, 4, 2, 'consulta por enfermedad grave', '02/04/2021');
+insert into consultas_medicas (consultas_id, id_pacientes, id_personal_medico, consulta_descripcion, fecha_de_consulta) values (22, 3, 5, 'consulta de rutina', '28/11/2020');
+insert into consultas_medicas (consultas_id, id_pacientes, id_personal_medico, consulta_descripcion, fecha_de_consulta) values (23, 6, 1, 'consulta por enfermedad grave', '01/07/2021');
+insert into consultas_medicas (consultas_id, id_pacientes, id_personal_medico, consulta_descripcion, fecha_de_consulta) values (24, 4, 5, 'consulta por enfermedad grave', '01/07/2020');
+insert into consultas_medicas (consultas_id, id_pacientes, id_personal_medico, consulta_descripcion, fecha_de_consulta) values (25, 4, 3, 'consulta de control', '15/02/2021');
+
+
